@@ -24,7 +24,8 @@ const MovieForm = ({ addToMovieList, setDisplay }) => {
 
     if (
       movieList.name.trim().length > 0 &&
-      Number(movieList.rating.trim()) <= 100
+      Number(movieList.rating.trim()) <= 100 &&
+      Number(movieList.rating.trim()) >= 1
     ) {
       const res = movieList.duration.match(/^([0-9]+[.])*[0-9]+[mh]$/);
       if (!res) {
