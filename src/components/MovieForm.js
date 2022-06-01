@@ -21,7 +21,11 @@ const MovieForm = ({ addToMovieList, setDisplay }) => {
 
   const handleSubmit = () => {
     // console.log(movieList.name.trim().length);
-    if (movieList.name.trim().length > 0) {
+
+    if (
+      movieList.name.trim().length > 0 &&
+      Number(movieList.rating.trim()) <= 100
+    ) {
       const res = movieList.duration.match(/^([0-9]+[.])*[0-9]+[mh]$/);
       if (!res) {
         setError(true);
