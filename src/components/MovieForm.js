@@ -20,7 +20,7 @@ const MovieForm = ({ addToMovieList, setDisplay }) => {
   };
 
   const handleSubmit = () => {
-   
+    // checks before form v=can be submitted
     if (
       movieList.name.trim().length > 0 &&
       Number(movieList.ratings.trim()) <= 100 &&
