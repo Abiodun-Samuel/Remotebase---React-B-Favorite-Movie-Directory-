@@ -55,7 +55,7 @@ function App() {
       <div className="row mt-5">
         <p>
           Developed by{" "}
-          <a target="_blank" href="https://abiodunsamuel.com/">
+          <a target="_blank" href="https://abiodunsamuel.com/" rel="noopener">
             Abiodun Samuel
           </a>
         </p>
