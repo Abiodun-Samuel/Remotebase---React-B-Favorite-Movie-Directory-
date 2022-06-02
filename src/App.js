@@ -51,6 +51,15 @@ function App() {
           {/* {notFound && <h4 className="text-danger mt-4">No Search Results</h4>} */}
         </div>
       </div>
+
+      <div className="row mt-5">
+        <p>
+          Developed by{" "}
+          <a target="_blank" href="https://abiodunsamuel.com/">
+            Abiodun Samuel
+          </a>
+        </p>
+      </div>
     </div>
   );
 }
