@@ -15,7 +15,7 @@ const MovieList = ({ movieLists }) => {
             key={movie.name + index}
           >
             <p>{movie.name}</p>
-            <p>Ratings: {movie.rating}/100</p>
+            <p>Ratings: {movie.ratings}/100</p>
             <p>{`${movie.duration} Hrs`}</p>
           </li>
         ))}

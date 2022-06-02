@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
 const MovieForm = ({ addToMovieList, setDisplay }) => {
-
   const [error, setError] = useState(false);
   const [movieList, setMovieList] = useState({
     name: "",
-    rating: "",
+    ratings: "",
     duration: "",
   });
-   
+
   const handleChange = (e) => {
     setError(false);
     const { name, value } = e.target;
@@ -21,31 +20,38 @@ const MovieForm = ({ addToMovieList, setDisplay }) => {
   };
 
   const handleSubmit = () => {
-    const res = movieList.duration.match(/^([0-9]+[.])*[0-9]+[mh]$/);
-    if (!res) {
-      setError(true);
-    } else {
-      var durStr = movieList.duration;
-      var dur = durStr.split("").pop();
-      var removeLastChar = durStr.slice(0, durStr.length - 1);
-      let num;
-      if (dur === "m") {
-        num = Number(removeLastChar) / 60;
-        num = num.toFixed(1);
-        //   num = `${num} Hrs`;
-        movieList.duration = num;
-      } else if (dur === "h") {
-        num = Number(removeLastChar);
-        //   num = `${num} Hrs`;
-        movieList.duration = num;
+    // checks before form v=can be submitted
+    if (
+      movieList.name.trim().length > 0 &&
+      Number(movieList.ratings.trim()) <= 100 &&
+      Number(movieList.ratings.trim()) >= 1
+    ) {
+      const res = movieList.duration.match(/^([0-9]+[.])*[0-9]+[mh]$/);
+      if (!res) {
+        setError(true);
+      } else {
+        var durStr = movieList.duration;
+        var dur = durStr.split("").pop();
+        var removeLastChar = durStr.slice(0, durStr.length - 1);
+        let num;
+        if (dur === "m") {
+          num = Number(removeLastChar) / 60;
+          num = num.toFixed(1);
+          //   num = `${num} Hrs`;
+          movieList.duration = num;
+        } else if (dur === "h") {
+          num = Number(removeLastChar);
+          //   num = `${num} Hrs`;
+          movieList.duration = num;
+        }
+        setDisplay("list");
+        addToMovieList(movieList);
+        setMovieList({
+          name: "",
+          ratings: "",
+          duration: "",
+        });
       }
-      setDisplay("list");
-      addToMovieList(movieList);
-      setMovieList({
-        name: "",
-        rating: "",
-        duration: "",
-      });
     }
   };
   return (
@@ -65,9 +71,9 @@ const MovieForm = ({ addToMovieList, setDisplay }) => {
             <input
               type="number"
               className="form-control my-3"
-               name="rating"
+              name="ratings"
               placeholder="Enter movie rating"
-              value={movieList.rating}
+              value={movieList.ratings}
               onChange={handleChange}
             />
             <input

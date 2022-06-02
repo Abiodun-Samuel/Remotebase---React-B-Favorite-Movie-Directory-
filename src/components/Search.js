@@ -31,7 +31,7 @@ const Search = ({
         placeholder="Search movie by name"
         className="form-control my-3"
         name="name"
-        //   value={movieList.name}
+        // value={movieList.name}
         onChange={handleChange}
       />
     </div>
